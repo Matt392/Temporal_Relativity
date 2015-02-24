@@ -15,7 +15,10 @@ public class Names
 
 	public class OreDictionary
 	{
-		public static final String TEMPORAL_IRON = "temporalIron";
+		public static final String INGOT = "ingot";
+		public static final String ORE = "ore";
+
+		public static final String TEMPORAL_IRON = "Iron";
 	}
 
 	public class Items

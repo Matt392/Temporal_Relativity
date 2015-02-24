@@ -4,6 +4,7 @@ import com.radex392.temporalrelativity.block.BlockTROre;
 import com.radex392.temporalrelativity.item.ItemTRIngot;
 import com.radex392.temporalrelativity.reference.Names;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class TROreInitialiser
 {
@@ -24,5 +25,11 @@ public class TROreInitialiser
 	{
 		GameRegistry.registerItem(ingot, ingot.getUnlocalizedName());
 		GameRegistry.registerBlock(oreBlock, oreBlock.getUnlocalizedName());
+
+		if(oreDictName.length() > 0)
+		{
+			OreDictionary.registerOre(Names.OreDictionary.ORE + oreDictName, oreBlock);
+			OreDictionary.registerOre(Names.OreDictionary.INGOT + oreDictName, ingot);
+		}
 	}
 }
