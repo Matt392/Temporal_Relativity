@@ -7,7 +7,6 @@
 build/*.jar
 eclipse/asm/*.jar
 eclipse/config/*.jar
-gradle/*.jar
 out/*.jar
 src/*.jar
 *.war

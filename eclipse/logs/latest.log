@@ -1,29 +1,3 @@
-[20:37:07] [main/INFO]: Setting user: Player140
-[20:37:09] [Client thread/INFO]: LWJGL Version: 2.9.1
-[20:37:12] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Not Enough Items, FMLFileResourcePack:Temporal Relativity
-[20:37:13] [Sound Library Loader/INFO]: Sound engine started
-[20:37:13] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[20:37:14] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[20:37:14] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Not Enough Items, FMLFileResourcePack:Temporal Relativity
-[20:37:14] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[20:37:14] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[20:37:15] [Sound Library Loader/INFO]: Sound engine started
-[20:37:17] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
-[20:37:17] [Server thread/INFO]: Generating keypair
-[20:37:27] [Server thread/INFO]: Preparing start region for level 0
-[20:37:28] [Server thread/INFO]: Changing view distance to 12, from 10
-[20:37:28] [Server thread/INFO]: Player140[local:E:9e040c1f] logged in with entity id 1 at (-95.06894699475802, 4.0, 20.982617862896117)
-[20:37:28] [Server thread/INFO]: Player140 joined the game
-[20:37:32] [Server thread/INFO]: Player140 has just earned the achievement [Taking Inventory]
-[20:37:32] [Client thread/INFO]: [CHAT] Player140 has just earned the achievement [Taking Inventory]
-[20:37:40] [Server thread/INFO]: [Player140: Given [Temporal Iron Ore] * 64 to Player140]
-[20:37:40] [Client thread/INFO]: [CHAT] Given [Temporal Iron Ore] * 64 to Player140
-[20:37:41] [Server thread/INFO]: [Player140: Given [Temporal Iron Ingot] * 64 to Player140]
-[20:37:41] [Client thread/INFO]: [CHAT] Given [Temporal Iron Ingot] * 64 to Player140
-[20:38:17] [Client thread/INFO]: Stopping!
-[20:38:17] [Server thread/INFO]: Stopping server
-[20:38:17] [Server thread/INFO]: Saving players
-[20:38:17] [Server thread/INFO]: Saving worlds
-[20:38:17] [Server thread/INFO]: Saving chunks for level 'Flat Test World'/Overworld
-[20:38:17] [Server thread/INFO]: Saving chunks for level 'Flat Test World'/Nether
-[20:38:17] [Server thread/INFO]: Saving chunks for level 'Flat Test World'/The End
+[20:57:04] [main/INFO]: Setting user: Player343
+[20:57:06] [Client thread/INFO]: LWJGL Version: 2.9.1
+[20:57:09] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Not Enough Items, FMLFileResourcePack:Temporal Relativity, FMLFileResourcePack:CoFH Core
