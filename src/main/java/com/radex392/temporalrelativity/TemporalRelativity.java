@@ -4,6 +4,7 @@ package com.radex392.temporalrelativity;
 import com.radex392.temporalrelativity.config.ConfigHandler;
 import com.radex392.temporalrelativity.init.ModBlocks;
 import com.radex392.temporalrelativity.init.ModItems;
+import com.radex392.temporalrelativity.init.ModOres;
 import com.radex392.temporalrelativity.proxy.IProxy;
 import com.radex392.temporalrelativity.reference.Reference;
 import com.radex392.temporalrelativity.utility.LogHelper;
@@ -33,6 +34,7 @@ public class TemporalRelativity
 
 		ModItems.init();
 		ModBlocks.init();
+		ModOres.init();
 
 		LogHelper.info("Pre Init Complete");
 	}
