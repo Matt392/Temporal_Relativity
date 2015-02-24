@@ -4,7 +4,6 @@
 .mtj.tmp/
 
 # Package Files #
-build/*.jar
 eclipse/asm/*.jar
 eclipse/config/*.jar
 out/*.jar
