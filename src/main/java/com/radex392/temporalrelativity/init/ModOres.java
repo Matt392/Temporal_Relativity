@@ -10,7 +10,7 @@ public class ModOres
 
 	public static void init()
 	{
-		ores.add(new TROreInitialiser(Names.Ores.TEMPORAL_IRON, Names.OreDictionary.TEMPORAL_IRON, 3, 4.0F, 6.0F));
+		ores.add(new TROreInitialiser(Names.Ores.TEMPORAL_IRON, Names.OreDictionary.TEMPORAL_IRON, 2, 5.0F, 6.0F));
 
 		for(int i = 0; i < ores.size(); ++i)
 		{

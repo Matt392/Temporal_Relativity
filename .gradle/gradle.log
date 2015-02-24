@@ -5,11 +5,37 @@
  R4wk, ZeuX, IngisKahn, bspkrs
  MCP Data version : unknown
 ****************************
-:ideaModule
-:ideaProject
-:ideaWorkspace
-:idea
+:extractMcpData UP-TO-DATE
+:getVersionJson
+:extractUserDev UP-TO-DATE
+:genSrgs SKIPPED
+:extractNatives UP-TO-DATE
+:copyNativesLegacy UP-TO-DATE
+:getAssetsIndex
+:getAssets
+:makeStart
+:downloadMcpTools
+:downloadClient
+:downloadServer
+:mergeJars
+:deobfuscateJar
+Applying SpecialSource...
+Applying Exceptor...
+:decompile
+:processSources
+Injecting fml files
+Applying fml patches
+Applying forge patches
+:remapJar
+:extractMinecraftSrc
+:recompMinecraftNote: Some input files use or override a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+:repackMinecraft
+:setupDecompWorkspace
 
 BUILD SUCCESSFUL
 
-Total time: 43.26 secs
+Total time: 4 mins 47.72 secs
