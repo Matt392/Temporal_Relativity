@@ -1,6 +1,6 @@
 [
 {
-  "modid": "TemporalRelativity",
+  "modid": "temporalrelativity",
   "name": "Temporal Relativity",
   "description": "Time shall bend to your will",
   "version": "1.0",
@@ -8,7 +8,8 @@
   "url": "",
   "updateUrl": "",
   "authorList": [
-    "radex392"
+    "radex392",
+    "ReaperXb"
   ],
   "credits": "",
   "logoFile": "",

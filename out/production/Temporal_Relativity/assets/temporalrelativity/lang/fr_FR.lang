@@ -1,0 +1,5 @@
+#Item localizations
+item.temporalrelativity:temporalIronIngot.name=Lingot de fer temporel
+
+#Block localizations
+tile.temporalrelativity:temporalIronOre.name=Minerai de fer temporel

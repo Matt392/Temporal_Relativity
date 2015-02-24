@@ -1,39 +1,12 @@
-[22:16:46] [main/INFO]: Setting user: Player737
-[22:16:48] [Client thread/INFO]: LWJGL Version: 2.9.1
-[22:16:48] [Client thread/ERROR]: Couldn't initialize twitch stream
-[22:16:52] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Not Enough Items, FMLFileResourcePack:Temporal Relativity
-[22:16:53] [Sound Library Loader/INFO]: Sound engine started
-[22:16:54] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[22:16:54] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[22:16:54] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Not Enough Items, FMLFileResourcePack:Temporal Relativity
-[22:16:55] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
-[22:16:55] [Client thread/INFO]: Created: 256x256 textures/items-atlas
-[22:16:55] [Sound Library Loader/INFO]: Sound engine started
-[22:17:02] [Server thread/INFO]: Starting integrated minecraft server version 1.7.10
-[22:17:02] [Server thread/INFO]: Generating keypair
-[22:17:02] [Server thread/INFO]: Preparing start region for level 0
-[22:17:03] [Server thread/INFO]: Changing view distance to 12, from 10
-[22:17:03] [Server thread/INFO]: Player737[local:E:d3c8299e] logged in with entity id 1 at (-93.33333975833676, 4.0, 28.28620724932156)
-[22:17:03] [Server thread/INFO]: Player737 joined the game
-[22:17:17] [Server thread/INFO]: Player737 has just earned the achievement [Taking Inventory]
-[22:17:17] [Client thread/INFO]: [CHAT] Player737 has just earned the achievement [Taking Inventory]
-[22:17:23] [Server thread/INFO]: [Player737: Given [Temporal Iron Ingot] * 64 to Player737]
-[22:17:23] [Client thread/INFO]: [CHAT] Given [Temporal Iron Ingot] * 64 to Player737
-[22:17:25] [Server thread/INFO]: [Player737: Given [Temporal Iron Ore] * 64 to Player737]
-[22:17:25] [Client thread/INFO]: [CHAT] Given [Temporal Iron Ore] * 64 to Player737
-[22:17:34] [Client thread/INFO]: [CHAT] You are now playing creative
-[22:18:47] [Client thread/INFO]: [CHAT] You are now playing creative+
-[22:18:47] [Client thread/INFO]: [CHAT] You are now playing adventure
-[22:18:49] [Server thread/INFO]: [Player737: Given [Temporal Iron Ore] * 64 to Player737]
-[22:18:49] [Client thread/INFO]: [CHAT] Given [Temporal Iron Ore] * 64 to Player737
-[22:19:28] [Server thread/INFO]: Saving and pausing game...
-[22:19:28] [Server thread/INFO]: Saving chunks for level 'Flat Test World'/Overworld
-[22:19:28] [Server thread/INFO]: Saving chunks for level 'Flat Test World'/Nether
-[22:19:28] [Server thread/INFO]: Saving chunks for level 'Flat Test World'/The End
-[22:19:29] [Server thread/INFO]: Stopping server
-[22:19:29] [Server thread/INFO]: Saving players
-[22:19:29] [Server thread/INFO]: Saving worlds
-[22:19:29] [Server thread/INFO]: Saving chunks for level 'Flat Test World'/Overworld
-[22:19:29] [Server thread/INFO]: Saving chunks for level 'Flat Test World'/Nether
-[22:19:29] [Server thread/INFO]: Saving chunks for level 'Flat Test World'/The End
-[22:19:30] [Client thread/INFO]: Stopping!
+[22:34:38] [main/INFO]: Setting user: Player3
+[22:34:39] [Client thread/INFO]: LWJGL Version: 2.9.1
+[22:34:39] [Client thread/ERROR]: Couldn't initialize twitch stream
+[22:34:43] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Not Enough Items, FMLFileResourcePack:Temporal Relativity
+[22:34:44] [Sound Library Loader/INFO]: Sound engine started
+[22:34:45] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[22:34:45] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[22:34:45] [Client thread/INFO]: Reloading ResourceManager: Default, FMLFileResourcePack:Forge Mod Loader, FMLFileResourcePack:Minecraft Forge, FMLFileResourcePack:Not Enough Items, FMLFileResourcePack:Temporal Relativity
+[22:34:45] [Client thread/INFO]: Created: 512x256 textures/blocks-atlas
+[22:34:46] [Client thread/INFO]: Created: 256x256 textures/items-atlas
+[22:34:46] [Sound Library Loader/INFO]: Sound engine started
+[22:35:28] [Client thread/INFO]: Stopping!
