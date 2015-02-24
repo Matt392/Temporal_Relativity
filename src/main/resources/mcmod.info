@@ -1,0 +1,21 @@
+[
+{
+  "modid": "TemporalRelativity",
+  "name": "Temporal Relativity",
+  "description": "Time shall bend to your will",
+  "version": "1.0",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "radex392"
+  ],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
