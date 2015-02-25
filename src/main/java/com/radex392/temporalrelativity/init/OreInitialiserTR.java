@@ -6,14 +6,14 @@ import com.radex392.temporalrelativity.reference.Names;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class TROreInitialiser
+public class OreInitialiserTR
 {
 	private String oreDictName = "";
 
 	private ItemTRIngot ingot;
 	private BlockTROre oreBlock;
 
-	public TROreInitialiser(String name, String oreDictName, int harvestLevel, float hardness, float resistance)
+	public OreInitialiserTR(String name, String oreDictName, int harvestLevel, float hardness, float resistance)
 	{
 		oreDictName = oreDictName;
 
