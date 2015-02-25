@@ -1,6 +1,8 @@
 package com.radex392.temporalrelativity.block;
 
+import com.radex392.temporalrelativity.creativetab.CreativeTabTR;
 import com.radex392.temporalrelativity.reference.Textures;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -17,6 +19,7 @@ public class BlockTR extends Block
 	protected BlockTR(Material material)
 	{
 		super(material);
+		this.setCreativeTab(CreativeTabTR.TR_TAB);
 	}
 
 	@Override
@@ -30,6 +33,11 @@ public class BlockTR extends Block
 	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		blockIcon = iconRegister.registerIcon(String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName())));
+	}
+
+	public void register()
+	{
+		GameRegistry.registerBlock(this, this.getUnlocalizedName());
 	}
 
 	protected String getUnwrappedUnlocalizedName(String unlocalizedName)

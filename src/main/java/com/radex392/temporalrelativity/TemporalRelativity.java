@@ -6,7 +6,9 @@ import com.radex392.temporalrelativity.entity.EntityInitialiserTR;
 import com.radex392.temporalrelativity.init.ModBlocks;
 import com.radex392.temporalrelativity.init.ModItems;
 import com.radex392.temporalrelativity.init.ModOres;
+import com.radex392.temporalrelativity.init.Recipes;
 import com.radex392.temporalrelativity.proxy.IProxy;
+import com.radex392.temporalrelativity.reference.Names;
 import com.radex392.temporalrelativity.reference.Reference;
 import com.radex392.temporalrelativity.utility.LogHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -15,7 +17,11 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import sun.rmi.runtime.Log;
+
+import java.util.ArrayList;
 
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.VERSION, guiFactory = Reference.GUI_FACTORY_CLASS)
@@ -46,6 +52,8 @@ public class TemporalRelativity
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+		Recipes.init();
+
 		LogHelper.info("Init Complete");
 	}
 
@@ -53,5 +61,18 @@ public class TemporalRelativity
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		LogHelper.info("Post Init Complete");
+		/*
+		for(String oreName : OreDictionary.getOreNames())
+		{
+			LogHelper.info(oreName);
+		}
+		*/
+		/*
+		ArrayList<ItemStack> names = OreDictionary.getOres("ingotIron");
+		for(int i = 0; i < names.size(); ++i)
+		{
+			LogHelper.info(names.get(i).getDisplayName());
+		}
+		*/
 	}
 }
