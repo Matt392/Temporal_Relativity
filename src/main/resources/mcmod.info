@@ -3,12 +3,13 @@
   "modid": "temporalrelativity",
   "name": "Temporal Relativity",
   "description": "Time shall bend to your will",
-  "version": "1.0",
+  "version": "0.1.0",
   "mcversion": "1.7.10",
   "url": "",
   "updateUrl": "",
   "authorList": [
-    "radex392"
+    "radex392",
+    "ReaperXb"
   ],
   "credits": "",
   "logoFile": "",

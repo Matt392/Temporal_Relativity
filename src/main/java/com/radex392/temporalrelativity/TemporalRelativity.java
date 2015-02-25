@@ -2,6 +2,7 @@ package com.radex392.temporalrelativity;
 
 
 import com.radex392.temporalrelativity.config.ConfigHandler;
+import com.radex392.temporalrelativity.entity.EntityInitialiserTR;
 import com.radex392.temporalrelativity.init.ModBlocks;
 import com.radex392.temporalrelativity.init.ModItems;
 import com.radex392.temporalrelativity.init.ModOres;
@@ -35,6 +36,9 @@ public class TemporalRelativity
 		ModItems.init();
 		ModBlocks.init();
 		ModOres.init();
+
+        //init mobs
+        EntityInitialiserTR.init();
 
 		LogHelper.info("Pre Init Complete");
 	}
