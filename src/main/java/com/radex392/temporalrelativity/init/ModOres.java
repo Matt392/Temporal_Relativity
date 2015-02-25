@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public class ModOres
 {
-	public  static ArrayList<TROreInitialiser> ores = new ArrayList<TROreInitialiser>();
+	public  static ArrayList<OreInitialiserTR> ores = new ArrayList<OreInitialiserTR>();
 
 	public static void init()
 	{
-		ores.add(new TROreInitialiser(Names.Ores.TEMPORAL_IRON, Names.OreDictionary.TEMPORAL_IRON, 2, 5.0F, 6.0F));
+		ores.add(new OreInitialiserTR(Names.Ores.TEMPORAL_IRON, Names.OreDictionary.TEMPORAL_IRON, 2, 5.0F, 6.0F));
 
 		for(int i = 0; i < ores.size(); ++i)
 		{
