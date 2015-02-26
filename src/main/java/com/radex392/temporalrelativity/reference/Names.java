@@ -18,7 +18,7 @@ public class Names
 		public static final String INGOT = "ingot";
 		public static final String ORE = "ore";
 
-		public static final String TEMPORAL_IRON = "Iron";
+		public static final String TEMPORAL_IRON = "TemporalIron";
 	}
 
     public class Entities

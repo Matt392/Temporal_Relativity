@@ -1,3 +1,6 @@
+#General localizations
+itemGroup.temporalrelativity=Temporal Relativity
+
 #Item localizations
 item.temporalrelativity:temporalIronIngot.name=Temporal Iron Ingot
 

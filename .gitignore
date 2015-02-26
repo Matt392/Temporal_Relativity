@@ -12,6 +12,7 @@ src/*.jar
 *.war
 *.ear
 *.iws
+Temporal_Relativity.iws
 
 # Folders #
 eclipse/logs/*

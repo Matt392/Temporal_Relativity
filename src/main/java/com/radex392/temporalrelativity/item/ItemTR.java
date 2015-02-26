@@ -1,7 +1,9 @@
 package com.radex392.temporalrelativity.item;
 
+import com.radex392.temporalrelativity.creativetab.CreativeTabTR;
 import com.radex392.temporalrelativity.reference.Names;
 import com.radex392.temporalrelativity.reference.Textures;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.SideOnly;
 import javafx.geometry.Side;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -14,6 +16,7 @@ public class ItemTR extends Item
 	{
 		super();
 		this.setUnlocalizedName(name);
+		this.setCreativeTab(CreativeTabTR.TR_TAB);
 	}
 
 	@Override
@@ -33,6 +36,11 @@ public class ItemTR extends Item
 	public void registerIcons(IIconRegister iconRegister)
 	{
 		itemIcon = iconRegister.registerIcon(this.getUnlocalizedName().substring(this.getUnlocalizedName().indexOf(".")+1));
+	}
+
+	public void register()
+	{
+		GameRegistry.registerItem(this, this.getUnlocalizedName());
 	}
 
 	protected String getUnwrappedUnlocalizedName(String unlocalizedName)
