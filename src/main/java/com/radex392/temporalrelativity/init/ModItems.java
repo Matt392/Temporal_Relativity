@@ -24,6 +24,9 @@ public class ModItems
 
 	public static void registerRecipies()
 	{
-
+		for(int i = 0; i < items.size(); ++i)
+		{
+			items.get(i).registerRecipies();
+		}
 	}
 }

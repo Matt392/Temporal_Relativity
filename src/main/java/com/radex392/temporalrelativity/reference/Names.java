@@ -27,5 +27,6 @@ public class Names
 
 	public class Blocks
 	{
+		public static final String TEMPORAL_INFUSOR = "temporalInfusor";
 	}
 }
