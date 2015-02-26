@@ -6,4 +6,6 @@ item.temporalrelativity:temporalIronIngot.name=Temporal Iron Ingot
 
 #Block localizations
 tile.temporalrelativity:temporalIronOre.name=Temporal Iron Ore
-tile.temporalrelativity:temporalInfusor.name=Temporal Infusor
+
+#Entity localizations
+entity.temporalrelativity:TimeChicken.name=Time Chicken
