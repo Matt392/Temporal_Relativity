@@ -8,11 +8,12 @@ build/*.jar
 eclipse/asm/*.jar
 eclipse/config/*.jar
 out/*.jar
+*out/*
 src/*.jar
 *.war
 *.ear
 *.iws
-Temporal_Relativity.iws
+*Temporal_Relativity.iws
 
 # Folders #
 eclipse/logs/*
