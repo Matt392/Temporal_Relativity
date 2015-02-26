@@ -1,7 +1,10 @@
 package com.radex392.temporalrelativity.entity;
 
 import com.radex392.temporalrelativity.TemporalRelativity;
+import com.radex392.temporalrelativity.reference.Names;
+import com.radex392.temporalrelativity.reference.Textures;
 import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -18,13 +21,14 @@ public class EntityInitialiserTR {
     }
 
     public static void registerEntities() {
-        createEntity( TimeChicken.class, "Time Chicken", 0x3B00FF, 0xA700FF, 8, 1, true, 2, 0, 1, EnumCreatureType.creature, BiomeGenBase.forest, BiomeGenBase.plains );
+        createEntity( TimeChicken.class, Textures.RESOURCE_PREFIX + Names.Entities.TIME_CHICKEN, 0x3B00FF, 0xA700FF, 64, 1, true, 2, 0, 1, EnumCreatureType.creature, BiomeGenBase.forest, BiomeGenBase.plains );
     }
 
     public static void createEntity( Class entityClass, String entityName, int solidColor, int spotColor, int trackingRange, int updateFreguency, boolean sendsVelocityUpdates,
                                     int weightedProb, int min, int max, EnumCreatureType typeOfCreature, BiomeGenBase... biomes ){
         int randomID = EntityRegistry.findGlobalUniqueEntityId();
         EntityRegistry.registerGlobalEntityID( entityClass, entityName, randomID );
+
         EntityRegistry.registerModEntity(entityClass, entityName, randomID, TemporalRelativity.instance, trackingRange, updateFreguency, sendsVelocityUpdates );
         EntityRegistry.addSpawn( entityClass, weightedProb, min, max, typeOfCreature, biomes );
 

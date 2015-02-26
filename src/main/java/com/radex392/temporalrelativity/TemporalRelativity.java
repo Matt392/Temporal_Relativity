@@ -33,6 +33,8 @@ public class TemporalRelativity
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		FMLCommonHandler.instance().bus().register(new ConfigHandler());
 
+        proxy.registerRenderThings();
+
 		ModItems.init();
 		ModBlocks.init();
 		ModOres.init();

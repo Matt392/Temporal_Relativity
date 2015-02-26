@@ -21,6 +21,11 @@ public class Names
 		public static final String TEMPORAL_IRON = "Iron";
 	}
 
+    public class Entities
+    {
+        public static final String TIME_CHICKEN = "TimeChicken";
+    }
+
 	public class Items
 	{
 	}
