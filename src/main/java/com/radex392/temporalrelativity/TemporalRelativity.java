@@ -3,10 +3,9 @@ package com.radex392.temporalrelativity;
 
 import com.radex392.temporalrelativity.config.ConfigHandler;
 import com.radex392.temporalrelativity.entity.EntityInitialiserTR;
-import com.radex392.temporalrelativity.init.ModBlocks;
-import com.radex392.temporalrelativity.init.ModItems;
-import com.radex392.temporalrelativity.init.ModOres;
-import com.radex392.temporalrelativity.init.Recipes;
+import com.radex392.temporalrelativity.handler.GUIHandler;
+import com.radex392.temporalrelativity.init.*;
+import com.radex392.temporalrelativity.network.PacketHandler;
 import com.radex392.temporalrelativity.proxy.IProxy;
 import com.radex392.temporalrelativity.reference.Names;
 import com.radex392.temporalrelativity.reference.Reference;
@@ -17,6 +16,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import sun.rmi.runtime.Log;
@@ -39,6 +39,8 @@ public class TemporalRelativity
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 		FMLCommonHandler.instance().bus().register(new ConfigHandler());
 
+		PacketHandler.init();
+
         proxy.registerRenderThings();
 
 		ModItems.init();
@@ -54,6 +56,9 @@ public class TemporalRelativity
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GUIHandler());
+		ModTileEntitys.init();
+
 		Recipes.init();
 
 		LogHelper.info("Init Complete");
