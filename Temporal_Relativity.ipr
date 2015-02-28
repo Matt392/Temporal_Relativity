@@ -169,6 +169,13 @@
       </item>
     </group>
   </component>
+  <component name="ProjectDictionaryState">
+    <dictionary name="radex_000">
+      <words>
+        <w>infusor</w>
+      </words>
+    </dictionary>
+  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Temporal_Relativity.iml" filepath="$PROJECT_DIR$/Temporal_Relativity.iml" />

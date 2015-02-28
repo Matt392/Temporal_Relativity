@@ -8,12 +8,7 @@ public class BlockTROre extends BlockTR
 {
 	public BlockTROre(String name, int harvestLevel, float hardness, float resistance)
 	{
-		super(Material.iron);
-		setBlockName(name);
-		setHarvestLevel("pickaxe", harvestLevel);
-		setHardness(hardness);
-		setResistance(resistance);
-		setStepSound(soundTypePiston);
+		super(Material.iron, name, "pickaxe", harvestLevel, hardness, resistance);
 
 	}
 }

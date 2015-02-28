@@ -44,6 +44,11 @@ public class ItemTR extends Item
 		GameRegistry.registerItem(this, this.getUnlocalizedName());
 	}
 
+	public void registerRecipies()
+	{
+
+	}
+
 	protected String getUnwrappedUnlocalizedName(String unlocalizedName)
 	{
 		return unlocalizedName.substring(unlocalizedName.indexOf(".")+1);
