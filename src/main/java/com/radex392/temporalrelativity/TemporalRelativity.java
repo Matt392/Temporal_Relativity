@@ -16,6 +16,7 @@ import com.radex392.temporalrelativity.potion.PotionTR;
 import com.radex392.temporalrelativity.proxy.IProxy;
 import com.radex392.temporalrelativity.reference.Names;
 import com.radex392.temporalrelativity.reference.Reference;
+import com.radex392.temporalrelativity.utility.InfusionHelper;
 import com.radex392.temporalrelativity.utility.LogHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -73,6 +74,7 @@ public class TemporalRelativity
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GUIHandler());
 		ModTileEntitys.init();
 
+		InfusionHelper.init();
 		Recipes.init();
 
 		LogHelper.info("Init Complete");

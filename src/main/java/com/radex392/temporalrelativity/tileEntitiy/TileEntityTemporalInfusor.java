@@ -1,8 +1,10 @@
 package com.radex392.temporalrelativity.tileEntitiy;
 
+import com.radex392.temporalrelativity.block.TemporalInfusor;
 import com.radex392.temporalrelativity.network.PacketHandler;
 import com.radex392.temporalrelativity.network.message.MessageTileTemporalInfusor;
 import com.radex392.temporalrelativity.reference.Names;
+import com.radex392.temporalrelativity.utility.InfusionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockFurnace;
@@ -41,16 +43,6 @@ public class TileEntityTemporalInfusor extends TileEntityTR implements ISidedInv
 		inventory = new ItemStack[INVENTORY_SIZE];
 	}
 
-	public static int getItemBurnTime(ItemStack itemStack)
-	{
-		return TileEntityFurnace.getItemBurnTime(itemStack);
-	}
-
-	public static boolean isItemFuel(ItemStack itemStack)
-	{
-		return TileEntityFurnace.isItemFuel(itemStack);
-	}
-
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side)
 	{
@@ -76,7 +68,7 @@ public class TileEntityTemporalInfusor extends TileEntityTR implements ISidedInv
 
 		// Read in the ItemStacks in the inventory from NBT
 		NBTTagList tagList = nbtTagCompound.getTagList(Names.NBT.ITEMS, 10);
-		inventory = new ItemStack[this.getSizeInventory()];
+		inventory = new ItemStack[getSizeInventory()];
 		for (int i = 0; i < tagList.tagCount(); ++i)
 		{
 			NBTTagCompound tagCompound = tagList.getCompoundTagAt(i);
@@ -152,13 +144,13 @@ public class TileEntityTemporalInfusor extends TileEntityTR implements ISidedInv
 	@Override
 	public String getInventoryName()
 	{
-		return this.hasCustomName() ? this.getCustomName() : name;
+		return hasCustomName() ? getCustomName() : name;
 	}
 
 	@Override
 	public boolean hasCustomInventoryName()
 	{
-		return this.hasCustomName();
+		return hasCustomName();
 	}
 
 	@Override
@@ -193,18 +185,18 @@ public class TileEntityTemporalInfusor extends TileEntityTR implements ISidedInv
 
 	private void sendDustPileData()
 	{
-		if (this.getBlockType() != null)
+		if (getBlockType() != null)
 		{
-			this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, this.getBlockType(), 2, getOutputStackSize());
-			this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, this.getBlockType(), 3, getOutputStackMeta());
+			worldObj.addBlockEvent(xCoord, yCoord, zCoord, getBlockType(), 2, getOutputStackSize());
+			worldObj.addBlockEvent(xCoord, yCoord, zCoord, getBlockType(), 3, getOutputStackMeta());
 		}
 	}
 
 	private int getOutputStackSize()
 	{
-		if (this.inventory[OUTPUT_INVENTORY_INDEX] != null)
+		if (inventory[OUTPUT_INVENTORY_INDEX] != null)
 		{
-			return this.inventory[OUTPUT_INVENTORY_INDEX].stackSize;
+			return inventory[OUTPUT_INVENTORY_INDEX].stackSize;
 		}
 
 		return 0;
@@ -212,9 +204,9 @@ public class TileEntityTemporalInfusor extends TileEntityTR implements ISidedInv
 
 	private int getOutputStackMeta()
 	{
-		if (this.inventory[OUTPUT_INVENTORY_INDEX] != null)
+		if (inventory[OUTPUT_INVENTORY_INDEX] != null)
 		{
-			return this.inventory[OUTPUT_INVENTORY_INDEX].getItemDamage();
+			return inventory[OUTPUT_INVENTORY_INDEX].getItemDamage();
 		}
 
 		return 0;
@@ -253,15 +245,15 @@ public class TileEntityTemporalInfusor extends TileEntityTR implements ISidedInv
 	@SideOnly(Side.CLIENT)
 	public int getCookProgressScaled(int scale)
 	{
-		return this.itemCookTime * scale / 200;
+		return itemCookTime * scale / 200;
 	}
 
 	@SideOnly(Side.CLIENT)
 	public int getBurnTimeRemainingScaled(int scale)
 	{
-		if (this.fuelBurnTime > 0)
+		if (fuelBurnTime > 0)
 		{
-			return this.deviceCookTime * scale / this.fuelBurnTime;
+			return deviceCookTime * scale / fuelBurnTime;
 		}
 
 		return 0;
@@ -270,85 +262,73 @@ public class TileEntityTemporalInfusor extends TileEntityTR implements ISidedInv
 	@Override
 	public void updateEntity()
 	{
-		boolean isBurning = this.deviceCookTime > 0;
+		boolean isBurning = deviceCookTime > 0;
 		boolean sendUpdate = false;
 
-		// If the Calcinator still has burn time, decrement it
-		if (this.deviceCookTime > 0)
+		if (deviceCookTime > 0 && canInfuse())
 		{
-			this.deviceCookTime--;
+			deviceCookTime--;
 		}
 
-		if (!this.worldObj.isRemote)
+		if (!worldObj.isRemote)
 		{
 			// Start "cooking" a new item, if we can
-			if (this.deviceCookTime == 0 && this.canInfuse())
+			if (deviceCookTime == 0 && canInfuse())
 			{
-				this.fuelBurnTime = this.deviceCookTime = getItemBurnTime(this.inventory[FUEL_INVENTORY_INDEX]);
+				fuelBurnTime = deviceCookTime = InfusionHelper.getItemBurnTime(inventory[FUEL_INVENTORY_INDEX]);
 
-				if (this.deviceCookTime > 0)
+				if (deviceCookTime > 0)
 				{
 					sendUpdate = true;
 
-					if (this.inventory[FUEL_INVENTORY_INDEX] != null)
+					if (inventory[FUEL_INVENTORY_INDEX] != null)
 					{
-						--this.inventory[FUEL_INVENTORY_INDEX].stackSize;
+						--inventory[FUEL_INVENTORY_INDEX].stackSize;
 
-						if (this.inventory[FUEL_INVENTORY_INDEX].stackSize == 0)
+						if (inventory[FUEL_INVENTORY_INDEX].stackSize == 0)
 						{
-							this.inventory[FUEL_INVENTORY_INDEX] = this.inventory[FUEL_INVENTORY_INDEX].getItem().getContainerItem(inventory[FUEL_INVENTORY_INDEX]);
+							inventory[FUEL_INVENTORY_INDEX] = inventory[FUEL_INVENTORY_INDEX].getItem().getContainerItem(inventory[FUEL_INVENTORY_INDEX]);
 						}
 					}
 				}
 			}
 
 			// Continue "cooking" the same item, if we can
-			if (this.deviceCookTime > 0 && this.canInfuse())
+			if (deviceCookTime > 0 && canInfuse())
 			{
-				this.itemCookTime++;
+				itemCookTime++;
 
-				if (this.itemCookTime == 200)
+				if (itemCookTime == 200)
 				{
-					this.itemCookTime = 0;
-					this.infuseItem();
+					itemCookTime = 0;
+					infuseItem();
 					sendUpdate = true;
 				}
 			}
 			else
 			{
-				this.itemCookTime = 0;
+				itemCookTime = 0;
 			}
 
 			// If the state has changed, catch that something changed
-			if (isBurning != this.deviceCookTime > 0)
+			if (isBurning != deviceCookTime > 0)
 			{
 				sendUpdate = true;
 			}
+		}
 
-			/*
-			//Item sucking
-			if (this.itemSuckCoolDown > 0)
-			{
-				itemSuckCoolDown--;
-			}
-			else
-			{
-				if (suckInItems(this))
-				{
-					markDirty();
-				}
-				itemSuckCoolDown = DEFAULT_ITEM_SUCK_COOL_DOWN;
-			}
-			*/
+		if (isBurning != deviceCookTime > 0)
+		{
+			TemporalInfusor.updateBlockState(deviceCookTime > 0, worldObj, xCoord, yCoord, zCoord);
 		}
 
 		if (sendUpdate)
 		{
-			this.markDirty();
-			this.state = this.deviceCookTime > 0 ? (byte) 1 : (byte) 0;
-			this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, this.getBlockType(), 1, this.state);
+			markDirty();
+			state = deviceCookTime > 0 ? (byte) 1 : (byte) 0;
+			worldObj.addBlockEvent(xCoord, yCoord, zCoord, getBlockType(), 1, state);
 			//sendDustPileData();
-			this.worldObj.notifyBlockChange(this.xCoord, this.yCoord, this.zCoord, this.getBlockType());
+			worldObj.notifyBlockChange(xCoord, yCoord, zCoord, getBlockType());
 		}
 	}
 
@@ -357,29 +337,24 @@ public class TileEntityTemporalInfusor extends TileEntityTR implements ISidedInv
 	{
 		if (eventId == 1)
 		{
-			this.state = (byte) eventData;
-			// NAME UPDATE - this.worldObj.updateAllLightTypes(this.xCoord, this.yCoord, this.zCoord);
-			this.worldObj.func_147451_t(this.xCoord, this.yCoord, this.zCoord);
+			state = (byte) eventData;
+			// NAME UPDATE - worldObj.updateAllLightTypes(xCoord, yCoord, zCoord);
+			worldObj.func_147451_t(xCoord, yCoord, zCoord);
 			return true;
 		}
 		else if (eventId == 2)
 		{
-			this.outputStackSize = (byte) eventData;
+			outputStackSize = (byte) eventData;
 			return true;
 		}
 		else if (eventId == 3)
 		{
-			this.outputStackMeta = (byte) eventData;
+			outputStackMeta = (byte) eventData;
 			return true;
 		}
 		{
 			return super.receiveClientEvent(eventId, eventData);
 		}
-	}
-
-	public static ItemStack getInfusionResult(ItemStack itemStack)
-	{
-		return FurnaceRecipes.smelting().getSmeltingResult(itemStack);
 	}
 
 	private boolean canInfuse()
@@ -390,20 +365,14 @@ public class TileEntityTemporalInfusor extends TileEntityTR implements ISidedInv
 		}
 		else
 		{
-			ItemStack infusionResult = getInfusionResult(inventory[INPUT_INVENTORY_INDEX]);
+			ItemStack infusionResult = InfusionHelper.getInfusionResult(inventory[INPUT_INVENTORY_INDEX]);
 
-			/**
-			 * If we don't get a calcination result, then return false
-			 */
 			if (infusionResult == null)
 			{
 				return false;
 			}
 
-			/**
-			 * If either slot is empty, return true (we have a valid calcination result
-			 */
-			if (this.inventory[OUTPUT_INVENTORY_INDEX] == null)
+			if (inventory[OUTPUT_INVENTORY_INDEX] == null)
 			{
 				return true;
 			}
@@ -420,16 +389,16 @@ public class TileEntityTemporalInfusor extends TileEntityTR implements ISidedInv
 
 	public void infuseItem()
 	{
-		if (this.canInfuse())
+		if (canInfuse())
 		{
-			ItemStack infusedItemStack = getInfusionResult(this.inventory[INPUT_INVENTORY_INDEX]);
+			ItemStack infusedItemStack = InfusionHelper.getInfusionResult(inventory[INPUT_INVENTORY_INDEX]);
 			addItemStackToOutput(infusedItemStack.copy());
 
-			this.inventory[INPUT_INVENTORY_INDEX].stackSize--;
+			inventory[INPUT_INVENTORY_INDEX].stackSize--;
 
-			if (this.inventory[INPUT_INVENTORY_INDEX].stackSize <= 0)
+			if (inventory[INPUT_INVENTORY_INDEX].stackSize <= 0)
 			{
-				this.inventory[INPUT_INVENTORY_INDEX] = null;
+				inventory[INPUT_INVENTORY_INDEX] = null;
 			}
 		}
 	}
@@ -438,16 +407,16 @@ public class TileEntityTemporalInfusor extends TileEntityTR implements ISidedInv
 	{
 		int maxStackSize = Math.min(getInventoryStackLimit(), infusedItemStack.getMaxStackSize());
 
-		if (this.inventory[OUTPUT_INVENTORY_INDEX] == null)
+		if (inventory[OUTPUT_INVENTORY_INDEX] == null)
 		{
-			this.inventory[OUTPUT_INVENTORY_INDEX] = infusedItemStack;
+			inventory[OUTPUT_INVENTORY_INDEX] = infusedItemStack;
 			return;
 		}
-		if (this.inventory[OUTPUT_INVENTORY_INDEX].isItemEqual(infusedItemStack) && this.inventory[OUTPUT_INVENTORY_INDEX].stackSize < maxStackSize)
+		if (inventory[OUTPUT_INVENTORY_INDEX].isItemEqual(infusedItemStack) && inventory[OUTPUT_INVENTORY_INDEX].stackSize < maxStackSize)
 		{
-			int addedSize = Math.min(infusedItemStack.stackSize, maxStackSize - this.inventory[OUTPUT_INVENTORY_INDEX].stackSize);
+			int addedSize = Math.min(infusedItemStack.stackSize, maxStackSize - inventory[OUTPUT_INVENTORY_INDEX].stackSize);
 			infusedItemStack.stackSize -= addedSize;
-			this.inventory[OUTPUT_INVENTORY_INDEX].stackSize += addedSize;
+			inventory[OUTPUT_INVENTORY_INDEX].stackSize += addedSize;
 			if (infusedItemStack.stackSize == 0)
 			{
 				return;

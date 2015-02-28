@@ -23,6 +23,9 @@ public class ModBlocks
 		{
 			blocks.get(i).register();
 		}
+
+		//Special cases
+		GameRegistry.registerBlock(temporalInfusorActive, temporalInfusorActive.getUnlocalizedName()+"_active");
 	}
 
 	public static void registerRecipies()

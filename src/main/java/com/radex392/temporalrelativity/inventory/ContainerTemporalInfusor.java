@@ -1,6 +1,7 @@
 package com.radex392.temporalrelativity.inventory;
 
 import com.radex392.temporalrelativity.tileEntitiy.TileEntityTemporalInfusor;
+import com.radex392.temporalrelativity.utility.InfusionHelper;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
@@ -96,11 +97,6 @@ public class ContainerTemporalInfusor extends ContainerTR
 			ItemStack slotItemStack = slot.getStack();
 			itemStack = slotItemStack.copy();
 
-			/**
-			 * If we are shift-clicking an item out of the Aludel's container,
-			 * attempt to put it in the first available slot in the player's
-			 * inventory
-			 */
 			if (slotIndex < TileEntityTemporalInfusor.INVENTORY_SIZE)
 			{
 				if (!this.mergeItemStack(slotItemStack, TileEntityTemporalInfusor.INVENTORY_SIZE, inventorySlots.size(), false))
@@ -110,7 +106,7 @@ public class ContainerTemporalInfusor extends ContainerTR
 			}
 			else
 			{
-				if (TileEntityTemporalInfusor.isItemFuel(slotItemStack))
+				if (InfusionHelper.isItemFuel(slotItemStack))
 				{
 					if (!this.mergeItemStack(slotItemStack, TileEntityTemporalInfusor.FUEL_INVENTORY_INDEX, TileEntityTemporalInfusor.OUTPUT_INVENTORY_INDEX, false))
 					{

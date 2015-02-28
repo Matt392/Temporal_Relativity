@@ -41,15 +41,20 @@ public class TemporalInfusor extends BlockTR implements ITileEntityProvider
 	@SideOnly(Side.CLIENT)
 	private IIcon front;
 
-	private static Boolean isActive;
-	private final Boolean isActiveBeta;
-	private final Random random = new Random();
+	private Boolean isActiveBeta;
+	private static Boolean isLocked = false;
 
 	public TemporalInfusor(Boolean isActive)
 	{
 		super(Material.iron, Names.Blocks.TEMPORAL_INFUSOR, "pickaxe", 0, 4.0F, 6.0F );
 
 		isActiveBeta = isActive;
+		multiSided = true;
+
+		if(isActiveBeta)
+		{
+			setLightLevel(1.0F);
+		}
 	}
 
 	@Override
@@ -73,7 +78,6 @@ public class TemporalInfusor extends BlockTR implements ITileEntityProvider
 		sides[SideHelper.RIGHT] = side;
 		sides[SideHelper.FRONT] = blockIcon;
 		sides[SideHelper.BACK] = side;
-		multiSided = true;
 	}
 
 	@Override
@@ -140,5 +144,46 @@ public class TemporalInfusor extends BlockTR implements ITileEntityProvider
 		}
 
 		return super.getLightValue(world, x, y, z);
+	}
+
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int meta)
+	{
+		if(isLocked == true)
+		{
+			return;
+		}
+		super.breakBlock(world, x, y, z, block, meta);
+	}
+
+	@Override
+	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
+	{
+		return Item.getItemFromBlock(ModBlocks.temporalInfusor);
+	}
+
+	public static void updateBlockState(boolean isActive, World worldObj, int xCoord, int yCoord, int zCoord)
+	{
+		int l = worldObj.getBlockMetadata(xCoord, yCoord, zCoord);
+		TileEntity tileentity = worldObj.getTileEntity(xCoord, yCoord, zCoord);
+
+		isLocked = true;
+		if (isActive)
+		{
+			worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.temporalInfusorActive);
+		}
+		else
+		{
+			worldObj.setBlock(xCoord, yCoord, zCoord, ModBlocks.temporalInfusor);
+		}
+		isLocked = false;
+
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, l, 2);
+
+		if (tileentity != null)
+		{
+			tileentity.validate();
+			worldObj.setTileEntity(xCoord, yCoord, zCoord, tileentity);
+		}
 	}
 }

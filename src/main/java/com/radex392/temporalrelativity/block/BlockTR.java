@@ -41,6 +41,8 @@ public class BlockTR extends Block
 		setHardness(hardness);
 		setResistance(resistance);
 		setStepSound(soundTypePiston);
+
+		multiSided = false;
 	}
 
 	@Override
@@ -61,8 +63,6 @@ public class BlockTR extends Block
 		sides[SideHelper.RIGHT] = blockIcon;
 		sides[SideHelper.FRONT] = blockIcon;
 		sides[SideHelper.BACK] = blockIcon;
-
-		multiSided = false;
 	}
 
 	public void register()
@@ -127,7 +127,7 @@ public class BlockTR extends Block
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int meta)
 	{
-		if(side == SideHelper.TOP || side == SideHelper.BOTTOM || multiSided == true)
+		if(side == SideHelper.TOP || side == SideHelper.BOTTOM || multiSided == false)
 		{
 			return sides[side];
 		}
