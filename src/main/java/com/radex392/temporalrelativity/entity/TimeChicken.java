@@ -88,7 +88,7 @@ public class TimeChicken extends EntityAnimal{
 
     protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
     {
-        playSound(Reference.RESOURCE_PREFIX + "mob.chicken.step", 0.15F, 1.0F);
+        playSound("mob.chicken.step", 0.15F, 1.0F);
     }
 
     protected Item getDropItem()

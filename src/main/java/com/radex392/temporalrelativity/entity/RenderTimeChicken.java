@@ -1,6 +1,7 @@
 package com.radex392.temporalrelativity.entity;
 
 import com.radex392.temporalrelativity.reference.Reference;
+import com.radex392.temporalrelativity.reference.Textures;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
@@ -17,7 +18,7 @@ import net.minecraft.util.ResourceLocation;
 @SideOnly(Side.CLIENT)
 public class RenderTimeChicken extends RenderLiving {
 
-    private static final ResourceLocation chickenTextures = new ResourceLocation( Reference.MOD_ID + ":textures/entity/TimeChicken.png");
+    private static final ResourceLocation chickenTextures = new ResourceLocation( Textures.RESOURCE_PREFIX + "textures/entity/TimeChicken.png");
 
     public RenderTimeChicken( ModelBase modelBase, float par2 ){
         super(modelBase, par2);
