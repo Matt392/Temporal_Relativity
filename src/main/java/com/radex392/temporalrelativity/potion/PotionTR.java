@@ -44,7 +44,7 @@ public class PotionTR extends Potion {
     public static PotionTR oldAge;
 
     public static  void registerPotions(){
-        oldAge = (PotionTR)((new PotionTR(STARTING_POTION_ID+0, false, 16262179)).setPotionName("potionTR.oldAge"));
+        oldAge = (PotionTR)((new PotionTR(STARTING_POTION_ID+0, true, 16262179)).setPotionName("potionTR.oldAge"));
     }
 
 
