@@ -2,6 +2,7 @@ package com.radex392.temporalrelativity.entity;
 
 import com.radex392.temporalrelativity.TemporalRelativity;
 import com.radex392.temporalrelativity.reference.Names;
+import com.radex392.temporalrelativity.reference.Reference;
 import com.radex392.temporalrelativity.reference.Textures;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
@@ -21,7 +22,7 @@ public class EntityInitialiserTR {
     }
 
     public static void registerEntities() {
-        createEntity( TimeChicken.class, Textures.RESOURCE_PREFIX + Names.Entities.TIME_CHICKEN, 0x3B00FF, 0xA700FF, 64, 1, true, 2, 0, 1, EnumCreatureType.creature, BiomeGenBase.forest, BiomeGenBase.plains );
+        createEntity( TimeChicken.class, Reference.RESOURCE_PREFIX + Names.Entities.TIME_CHICKEN, 0x3B00FF, 0xA700FF, 64, 1, true, 2, 0, 1, EnumCreatureType.creature, BiomeGenBase.forest, BiomeGenBase.plains );
     }
 
     public static void createEntity( Class entityClass, String entityName, int solidColor, int spotColor, int trackingRange, int updateFreguency, boolean sendsVelocityUpdates,

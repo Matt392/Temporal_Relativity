@@ -1,0 +1,18 @@
+{
+  "mob.timeChicken.say":
+  {
+    "category": "neutral",
+    "sounds":
+    [
+      "mob/timeChicken/Chicken1"
+    ]
+  },
+  "mob.timeChicken.hurt":
+  {
+    "category": "neutral",
+    "sounds":
+    [
+      "mob/timeChicken/Chickenhurt1"
+    ]
+  }
+}

@@ -9,3 +9,6 @@ tile.temporalrelativity:temporalIronOre.name=Temporal Iron Ore
 
 #Entity localizations
 entity.temporalrelativity:TimeChicken.name=Time Chicken
+
+#Death Messages
+death.attack.temporalrelativity.oldAge=%s died from old age

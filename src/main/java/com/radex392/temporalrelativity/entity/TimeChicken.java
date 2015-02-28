@@ -1,19 +1,22 @@
 package com.radex392.temporalrelativity.entity;
 
-import com.radex392.temporalrelativity.reference.Textures;
+import com.radex392.temporalrelativity.reference.Reference;
+import cpw.mods.fml.common.Mod;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemEnderPearl;
-import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 
 /**
  * Created by OEM on 25/02/2015.
@@ -29,15 +32,16 @@ public class TimeChicken extends EntityAnimal{
     public TimeChicken( World world ) {
         super( world );
 
-        this.setSize(0.3f, 0.7f);
-        this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(1, new EntityAIPanic(this, 1.4d));
-        this.tasks.addTask(2, new EntityAIMate(this, 1.0d));
-        this.tasks.addTask(3, new EntityAITempt(this, 1.0d, Items.ender_pearl, false));
-        this.tasks.addTask(4, new EntityAIFollowParent(this, 1.1d));
-        this.tasks.addTask(5, new EntityAIWander(this, 1.0d));
-        this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0f));
-        this.tasks.addTask(7, new EntityAILookIdle(this));
+        setSize(0.3f, 0.7f);
+        tasks.addTask(0, new EntityAISwimming(this));
+        tasks.addTask(1, new EntityAIPanic(this, 1.4d));
+        tasks.addTask(2, new EntityAIMate(this, 1.0d));
+        tasks.addTask(3, new EntityAITempt(this, 1.0d, Items.ender_pearl, false));
+        tasks.addTask(4, new EntityAIFollowParent(this, 1.1d));
+        tasks.addTask(5, new EntityAIWander(this, 1.0d));
+        tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 6.0f));
+        tasks.addTask(7, new EntityAILookIdle(this));
+
     }
 
     public boolean isAIEnabled(){
@@ -47,8 +51,8 @@ public class TimeChicken extends EntityAnimal{
     protected void applyEntityAttributes(){
         super.applyEntityAttributes();
 
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8.0d);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
+        getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(8.0d);
+        getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
     }
 
 
@@ -63,7 +67,7 @@ public class TimeChicken extends EntityAnimal{
      */
     protected String getLivingSound()
     {
-        return "mob.chicken.say";
+        return Reference.RESOURCE_PREFIX + "mob.timeChicken.say";
     }
 
     /**
@@ -71,7 +75,7 @@ public class TimeChicken extends EntityAnimal{
      */
     protected String getHurtSound()
     {
-        return "mob.chicken.hurt";
+        return Reference.RESOURCE_PREFIX + "mob.timeChicken.hurt";
     }
 
     /**
@@ -79,12 +83,12 @@ public class TimeChicken extends EntityAnimal{
      */
     protected String getDeathSound()
     {
-        return "mob.chicken.hurt";
+        return Reference.RESOURCE_PREFIX + "mob.timeChicken.hurt";
     }
 
     protected void func_145780_a(int p_145780_1_, int p_145780_2_, int p_145780_3_, Block p_145780_4_)
     {
-        this.playSound("mob.chicken.step", 0.15F, 1.0F);
+        playSound(Reference.RESOURCE_PREFIX + "mob.chicken.step", 0.15F, 1.0F);
     }
 
     protected Item getDropItem()
@@ -102,7 +106,7 @@ public class TimeChicken extends EntityAnimal{
 
         for (int k = 0; k < j; ++k)
         {
-            this.dropItem(Items.ender_pearl, 1);
+            dropItem(Items.ender_pearl, 1);
         }
 
         /*if (this.isBurning())
@@ -118,33 +122,33 @@ public class TimeChicken extends EntityAnimal{
     public void onLivingUpdate() {
         super.onLivingUpdate();
 
-        this.field_70888_h = this.field_70886_e;
-        this.field_70884_g = this.destPos;
-        this.destPos = (float)((double)this.destPos + (double)(this.onGround ? -1 : 4) * 0.3D);
+        field_70888_h = field_70886_e;
+        field_70884_g = destPos;
+        destPos = (float)((double)destPos + (double)(onGround ? -1 : 4) * 0.3D);
 
-        if (this.destPos < 0.0F)
+        if (destPos < 0.0F)
         {
-            this.destPos = 0.0F;
+            destPos = 0.0F;
         }
 
-        if (this.destPos > 1.0F)
+        if (destPos > 1.0F)
         {
-            this.destPos = 1.0F;
+            destPos = 1.0F;
         }
 
-        if (!this.onGround && this.field_70889_i < 1.0F)
+        if (!onGround && field_70889_i < 1.0F)
         {
-            this.field_70889_i = 1.0F;
+            field_70889_i = 1.0F;
         }
 
-        this.field_70889_i = (float)((double)this.field_70889_i * 0.9D);
+        field_70889_i = (float)((double)field_70889_i * 0.9D);
 
-        if (!this.onGround && this.motionY < 0.0D)
+        if (!onGround && motionY < 0.0D)
         {
-            this.motionY *= 0.6D;
+            motionY *= 0.6D;
         }
 
-        this.field_70886_e += this.field_70889_i * 2.0F;
+        field_70886_e += field_70889_i * 2.0F;
     }
 
     /**

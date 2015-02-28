@@ -2,11 +2,14 @@ package com.radex392.temporalrelativity;
 
 
 import com.radex392.temporalrelativity.config.ConfigHandler;
+import com.radex392.temporalrelativity.damagesource.DamageSourceTR;
 import com.radex392.temporalrelativity.entity.EntityInitialiserTR;
+import com.radex392.temporalrelativity.eventhandler.EventRegister;
 import com.radex392.temporalrelativity.init.ModBlocks;
 import com.radex392.temporalrelativity.init.ModItems;
 import com.radex392.temporalrelativity.init.ModOres;
 import com.radex392.temporalrelativity.init.Recipes;
+import com.radex392.temporalrelativity.potion.PotionTR;
 import com.radex392.temporalrelativity.proxy.IProxy;
 import com.radex392.temporalrelativity.reference.Names;
 import com.radex392.temporalrelativity.reference.Reference;
@@ -40,6 +43,13 @@ public class TemporalRelativity
 		FMLCommonHandler.instance().bus().register(new ConfigHandler());
 
         proxy.registerRenderThings();
+
+        EventRegister.registerEventListeners();
+
+        PotionTR.expandPotionTypes();
+        PotionTR.registerPotions();
+
+        DamageSourceTR.registerDamageEffects();
 
 		ModItems.init();
 		ModBlocks.init();

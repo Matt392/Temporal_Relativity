@@ -1,6 +1,7 @@
 package com.radex392.temporalrelativity.block;
 
 import com.radex392.temporalrelativity.creativetab.CreativeTabTR;
+import com.radex392.temporalrelativity.reference.Reference;
 import com.radex392.temporalrelativity.reference.Textures;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -25,7 +26,7 @@ public class BlockTR extends Block
 	@Override
 	public String getUnlocalizedName()
 	{
-		return String.format("tile.%s%s", Textures.RESOURCE_PREFIX, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+		return String.format("tile.%s%s", Reference.RESOURCE_PREFIX, getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
 	}
 
 	@Override
