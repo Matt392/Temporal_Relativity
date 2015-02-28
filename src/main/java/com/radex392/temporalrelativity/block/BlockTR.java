@@ -27,6 +27,7 @@ public class BlockTR extends Block
 {
 	@SideOnly(Side.CLIENT)
 	protected IIcon sides[];
+	protected boolean multiSided;
 
 	public BlockTR(Material material, String name, String tools, int harvestLevel, float hardness, float resistance)
 	{
@@ -59,6 +60,8 @@ public class BlockTR extends Block
 		sides[SideHelper.RIGHT] = blockIcon;
 		sides[SideHelper.FRONT] = blockIcon;
 		sides[SideHelper.BACK] = blockIcon;
+
+		multiSided = false;
 	}
 
 	public void register()
@@ -113,8 +116,98 @@ public class BlockTR extends Block
 				((TileEntityTR) world.getTileEntity(x, y, z)).setCustomName(itemStack.getDisplayName());
 			}
 
+
+			world.setBlockMetadataWithNotify(x, y, z, direction, 2);
 			((TileEntityTR) world.getTileEntity(x, y, z)).setOrientation(direction);
 		}
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int meta)
+	{
+		if(side == SideHelper.TOP || side == SideHelper.BOTTOM || multiSided == true)
+		{
+			return sides[side];
+		}
+		if(meta == ForgeDirection.SOUTH.ordinal())
+		{
+			return sides[side];
+		}
+		else if(meta == ForgeDirection.NORTH.ordinal())
+		{
+			switch (side)
+			{
+				case SideHelper.FRONT:
+				{
+					return sides[SideHelper.BACK];
+				}
+				case SideHelper.BACK:
+				{
+					return sides[SideHelper.FRONT];
+				}
+				case SideHelper.RIGHT:
+				{
+					return sides[SideHelper.LEFT];
+				}
+				case SideHelper.LEFT:
+				{
+					return sides[SideHelper.RIGHT];
+				}
+				default:
+					break;
+			}
+		}
+		else if(meta == ForgeDirection.EAST.ordinal())
+		{
+			switch (side)
+			{
+				case SideHelper.FRONT:
+				{
+					return sides[SideHelper.LEFT];
+				}
+				case SideHelper.BACK:
+				{
+					return sides[SideHelper.RIGHT];
+				}
+				case SideHelper.RIGHT:
+				{
+					return sides[SideHelper.FRONT];
+				}
+				case SideHelper.LEFT:
+				{
+					return sides[SideHelper.BACK];
+				}
+				default:
+					break;
+			}
+		}
+		else if(meta == ForgeDirection.WEST.ordinal())
+		{
+			switch (side)
+			{
+				case SideHelper.FRONT:
+				{
+					return sides[SideHelper.RIGHT];
+				}
+				case SideHelper.BACK:
+				{
+					return sides[SideHelper.LEFT];
+				}
+				case SideHelper.RIGHT:
+				{
+					return sides[SideHelper.BACK];
+				}
+				case SideHelper.LEFT:
+				{
+					return sides[SideHelper.FRONT];
+				}
+				default:
+					break;
+			}
+		}
+
+		return sides[side];
 	}
 
 	protected void dropInventory(World world, int x, int y, int z)

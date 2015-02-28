@@ -73,12 +73,7 @@ public class TemporalInfusor extends BlockTR implements ITileEntityProvider
 		sides[SideHelper.RIGHT] = side;
 		sides[SideHelper.FRONT] = blockIcon;
 		sides[SideHelper.BACK] = side;
-	}
-
-	@Override
-	public IIcon getIcon(int side, int meta)
-	{
-		return sides[side];
+		multiSided = true;
 	}
 
 	@Override
